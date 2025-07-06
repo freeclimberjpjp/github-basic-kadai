@@ -1,24 +1,65 @@
 PS C:\Users\freec> cd C:\Users\freec\git_challenge
 PS C:\Users\freec\git_challenge> git init
 Initialized empty Git repository in C:/Users/freec/git_challenge/.git/
-PS C:\Users\freec\git_challenge> echo "Hello, world!" >> he
-llo_world.txt                               
-PS C:\Users\freec\git_challenge> git add
-Nothing specified, nothing added.
-hint: Disable this message with "git config set advice.addEmptyPathspec false"
+PS C:\Users\freec\git_challenge> echo "Hello, world!" >> hello_world.txt                
 PS C:\Users\freec\git_challenge> git add hello_world.txt
+PS C:\Users\freec\git_challenge> git status
+On branch main
+
+No commits yet
+
+o unstage)
+        new file:   hello_world.txt
+
 PS C:\Users\freec\git_challenge> git commit -m "hello_world.txtを追加"
-[main (root-commit) 978faa5] hello_world.txtを追加
+[main (root-commit) 80981f8] hello_world.txtを追加
  1 file changed, 0 insertions(+), 0 deletions(-)
  create mode 100644 hello_world.txt
-PS C:\Users\freec\git_challenge> git diff --staged
-PS C:\Users\freec\git_challenge> echo "こんにちは世界！" >> hello_world.txt
-PS C:\Users\freec\git_challenge> git add hello_world.txt   
-PS C:\Users\freec\git_challenge> git commit -m "日本語訳を追加"      
-[main 7b326d9] 日本語訳を追加
+PS C:\Users\freec\git_challenge> echo "こんにちは、世界！" >> hello_worl
+PS C:\Users\freec\git_challenge> git add hello_world.txt
+PS C:\Users\freec\git_challenge> git status
+On branch main
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        modified:   hello_world.txt
+
+PS C:\Users\freec\git_challenge> git commit -m "日本語訳を追記"       
+[main 865e3de] 日本語訳を追記
  1 file changed, 0 insertions(+), 0 deletions(-)
-PS C:\Users\freec\git_challenge> git diff --staged
 PS C:\Users\freec\git_challenge> git log --oneline
-7b326d9 (HEAD -> main) 日本語訳を追加
-978faa5 hello_world.txtを追加
+865e3de (HEAD -> main) 日本語訳を追記
+80981f8 hello_world.txtを追加
 PS C:\Users\freec\git_challenge> 
+
+
+
+
+1 file changed, 0 insertions(+), 0 deletions(-)
+は2か所あります。
+この現象は、WindowsのPowerShellで
+
+を実行した場合、ファイルに書き込まれる内容が "Hello, world!"（ダブルクォーテーション付き） になることが原因です。
+
+さらに、PowerShellの echo は実は Write-Output であり、改行コードの扱いが特殊なため、
+Gitが「内容の追加」として認識しない場合があります。
+
+原因まとめ
+PowerShellで echo "Hello, world!" >> hello_world.txt を使うと、
+ファイルの内容が "Hello, world!"（ダブルクォーテーション付き）になる
+もしくは、改行コードやファイルのエンコーディングの違いで、Gitが差分を正しく認識できない場合がある
+
+内容自体は以下のとおり正しく反映されてます。
+PS C:\Users\freec\git_challenge> git log --oneline
+865e3de (HEAD -> main) 日本語訳を追記
+80981f8 hello_world.txtを追加
+PS C:\Users\freec\git_challenge> 
+
+
+
+
+
+
+
+
+
+
