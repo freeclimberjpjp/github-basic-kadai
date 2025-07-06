@@ -1,0 +1,25 @@
+PS C:\Users\freec> cd C:\Users\freec\git_challenge
+PS C:\Users\freec\git_challenge> git init C:\Users\freec\git_challenge
+Initialized empty Git repository in C:/Users/freec/git_challenge/.git/
+PS C:\Users\freec\git_challenge> git add C:\Users\freec\git_challenge
+PS C:\Users\freec\git_challenge> git commit -m "hello_world.txtを追加"          
+[main (root-commit) e37215b] hello_world.txtを追加
+ 1 file changed, 1 insertion(+)
+ create mode 100644 hello_world.txt
+PS C:\Users\freec\git_challenge> git add C:\Users\freec\git_challenge
+PS C:\Users\freec\git_challenge> git commit -m "日本 語訳を追記"      
+[main 14be55a] 日本語訳を追記
+ 1 file changed, 2 insertions(+), 1 deletion(-)      
+PS C:\Users\freec\git_challenge> git log
+commit 14be55a530a768cc840e494a6c1cd4e8b0f02cbf (HEAD -> main)
+Author: freeclimberjpjp <freeclimberjpjp@gmail.com>  
+Date:   Sun Jul 6 16:49:19 2025 +0900
+
+    日本語訳を追記
+
+commit e37215bbab2e419ce915430bff6ad6cbc0d3c895      
+Author: freeclimberjpjp <freeclimberjpjp@gmail.com>  
+Date:   Sun Jul 6 16:47:34 2025 +0900
+
+    hello_world.txtを追加
+PS C:\Users\freec\git_challenge> 
